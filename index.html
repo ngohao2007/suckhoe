@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Sống Khỏe chia sẻ kiến thức và thói quen hữu ích để chăm sóc sức khỏe mỗi ngày."
+  />
+  <title>Sống Khỏe — Chăm sóc sức khỏe mỗi ngày</title>
+  <style>
+    :root {
+      --green: #16866a;
+      --green-dark: #11664f;
+      --mint: #e9f7f1;
+      --ink: #19332c;
+      --muted: #64746e;
+      --white: #fff;
+      --border: #e5eeea;
+      --shadow: 0 16px 40px rgb(25 51 44 / 9%);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgb(255 255 255 / 94%);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--green-dark);
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--mint);
+      font-size: 1.25rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--green);
+      color: var(--white);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .button:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .button.secondary {
+      background: var(--white);
+      color: var(--green-dark);
+      border: 1px solid var(--border);
+    }
+
+    .hero {
+      padding: 76px 0 68px;
+      background:
+        radial-gradient(circle at 80% 20%, #d7f2e7 0, transparent 26%),
+        linear-gradient(135deg, #f3fbf7, #fff 62%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--green);
+      font-size: .83rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 650px;
+      margin-bottom: 20px;
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-card {
+      min-height: 350px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      border-radius: 32px;
+      background: linear-gradient(145deg, #ccefe0, #f1fbf6);
+      box-shadow: var(--shadow);
+    }
+
+    .heart-illustration {
+      width: min(250px, 70%);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgb(255 255 255 / 70%);
+      border-radius: 50%;
+      background: rgb(255 255 255 / 55%);
+      font-size: 7rem;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      padding: 13px 17px;
+      border-radius: 14px;
+      background: var(--white);
+      color: var(--muted);
+      font-size: .9rem;
+      box-shadow: var(--shadow);
+    }
+
+    section { padding: 76px 0; }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 10px;
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      letter-spacing: -.03em;
+    }
+
+    .section-heading p { color: var(--muted); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--white);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: var(--mint);
+      font-size: 1.55rem;
+    }
+
+    .card h3 { margin-bottom: 9px; }
+    .card p { margin-bottom: 0; color: var(--muted); }
+
+    .about {
+      background: #f5faf7;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .about-panel {
+      padding: 34px;
+      border-radius: 24px;
+      background: var(--mint);
+    }
+
+    .about-panel strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green-dark);
+      font-size: 1.3rem;
+    }
+
+    .about-copy p { color: var(--muted); }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 22px 0 0;
+      list-style: none;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      margin-right: 10px;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .contact {
+      padding: 52px;
+      border-radius: 28px;
+      background: var(--green-dark);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 10px;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    .contact p {
+      max-width: 600px;
+      margin: 0 auto 22px;
+      color: #d7eee6;
+    }
+
+    .contact .button {
+      background: var(--white);
+      color: var(--green-dark);
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .nav { min-height: 64px; }
+      .nav-links { display: none; }
+      .hero { padding: 54px 0; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-card { min-height: 260px; }
+      section { padding: 58px 0; }
+      .cards { grid-template-columns: 1fr; }
+      .contact { padding: 36px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#" aria-label="Sống Khỏe - Trang chủ">
+        <span class="brand-mark">✚</span>
+        <span>Sống Khỏe</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Điều hướng chính">
+        <a href="#loi-ich">Chủ đề</a>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+
+      <a class="button" href="#loi-ich">Khám phá</a>
+    </div>
+  </header>
+<script>
+ window.difyChatbotConfig = {
+  token: 'n7QARP7Igdk8J3bV',
+  baseUrl: 'https://udify.app',
+  inputs: {
+    // You can define the inputs from the Start node here
+    // key is the variable name
+    // e.g.
+    // name: "NAME"
+  },
+  systemVariables: {
+    // user_id: 'YOU CAN DEFINE USER ID HERE',
+    // conversation_id: 'YOU CAN DEFINE CONVERSATION ID HERE, IT MUST BE A VALID UUID',
+  },
+  userVariables: {
+    // avatar_url: 'YOU CAN DEFINE USER AVATAR URL HERE',
+    // name: 'YOU CAN DEFINE USER NAME HERE',
+  },
+ }
+</script>
+<script
+ src="https://udify.app/embed.min.js"
+ id="n7QARP7Igdk8J3bV"
+ defer>
+</script>
+<style>
+  #dify-chatbot-bubble-button {
+    background-color: #1C64F2 !important;
+  }
+  #dify-chatbot-bubble-window {
+    width: 24rem !important;
+    height: 40rem !important;
+  }
+</style>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Chăm sóc bản thân mỗi ngày</span>
+          <h1>Sức khỏe tốt bắt đầu từ những điều nhỏ</h1>
+          <p>
+            Tìm hiểu những thói quen đơn giản giúp bạn quan tâm tốt hơn đến
+            sức khỏe thể chất và tinh thần của mình.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#loi-ich">Xem chủ đề sức khỏe</a>
+            <a class="button secondary" href="#gioi-thieu">Tìm hiểu thêm</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="hero-card" aria-label="Minh họa trái tim">
+            <div class="heart-illustration" aria-hidden="true">💚</div>
+          </div>
+          <div class="hero-note">Ăn cân bằng · Vận động đều · Nghỉ ngơi đủ</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loi-ich">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Chủ đề nổi bật</span>
+          <h2>Chăm sóc sức khỏe toàn diện</h2>
+          <p>Một vài nền tảng hữu ích để bạn xây dựng lối sống lành mạnh hơn.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon" aria-hidden="true">🥗</div>
+            <h3>Dinh dưỡng cân bằng</h3>
+            <p>Ưu tiên bữa ăn đa dạng, đủ nhóm thực phẩm và phù hợp với nhu cầu cá nhân.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">🚶</div>
+            <h3>Vận động thường xuyên</h3>
+            <p>Chọn hình thức vận động bạn yêu thích và tăng cường độ từ từ, an toàn.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon" aria-hidden="true">🌙</div>
+            <h3>Giấc ngủ chất lượng</h3>
+            <p>Duy trì giờ ngủ đều đặn và tạo không gian nghỉ ngơi yên tĩnh, thoải mái.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="gioi-thieu">
+      <div class="container about-grid">
+        <div class="about-panel">
+          <strong>Khỏe mạnh theo cách của bạn</strong>
+          <p>
+            Không có một lộ trình duy nhất phù hợp với tất cả mọi người.
+            Hãy bắt đầu bằng những thay đổi nhỏ và bền vững.
+          </p>
+        </div>
+
+        <div class="about-copy">
+          <span class="eyebrow">Về Sống Khỏe</span>
+          <h2>Thông tin dễ hiểu, thói quen dễ bắt đầu</h2>
+          <p>
+            Sống Khỏe giúp bạn khám phá kiến thức chăm sóc sức khỏe thường ngày
+            và gợi ý những bước đơn giản để quan tâm đến bản thân.
+          </p>
+          <ul class="check-list">
+            <li>Chia sẻ nội dung rõ ràng, dễ áp dụng</li>
+            <li>Khuyến khích thói quen lành mạnh và bền vững</li>
+            <li>Tôn trọng sự khác biệt trong nhu cầu mỗi người</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="lien-he">
+      <div class="container">
+        <div class="contact">
+          <h2>Bắt đầu hành trình sống khỏe</h2>
+          <p>
+            Hãy lựa chọn một thói quen nhỏ để thực hiện hôm nay — chẳng hạn
+            đi bộ, uống đủ nước hoặc dành thời gian nghỉ ngơi.
+          </p>
+          <a class="button" href="mailto:hello@example.com">Liên hệ với chúng tôi</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 Sống Khỏe</span>
+      <span>Thông tin trên trang chỉ mang tính tham khảo, không thay thế tư vấn y tế chuyên môn.</span>
+    </div>
+  </footer>
+</body>
+</html>
